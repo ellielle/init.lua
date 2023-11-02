@@ -8,10 +8,16 @@ return {
 	config = function()
 		local nvimtree_status, nvimtree = pcall(require, "nvim-tree")
 		if not nvimtree_status then
-			print("mason failed to load")
+			print("nvim-tree failed to load")
 			return
 		end
-		nvimtree.setup({})
+		nvimtree.setup({
+			sort = {
+				sorter = "name",
+				files_first = true,
+				folders_first = false,
+			},
+		})
 		vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- Toggle nvimtree
 		vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>") -- Toggle nvimtree
 	end,

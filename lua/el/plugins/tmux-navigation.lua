@@ -3,7 +3,7 @@ return {
 	config = function()
 		local nvimtmux_status, nvim_tmux_nav = pcall(require, "nvim-tmux-navigation")
 		if not nvimtmux_status then
-			print("mason failed to load")
+			print("nvim-tmux-navigation failed to load")
 			return
 		end
 
