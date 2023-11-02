@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		-- import conform formatter plugin safely
@@ -23,7 +24,8 @@ return {
 				css = { "prettierd" },
 				json = { "prettierd" },
 				vue = { "prettierd" },
-				svelte = { "prettierd" },
+				-- prettierd is having issues with svelte files, default to lsp_fallback
+				-- svelte = { "prettierd" },
 				-- everything else will use lsp format
 			},
 			-- enable format on save
@@ -43,7 +45,7 @@ return {
 			end, { desc = "Format file, or range in visual mode" }),
 
 			-- Formatting
-			-- vim.keymap.set("n", "<leader>;f", vim.lsp.buf.format) -- separate format key for svelte files, issues with formatter
+			vim.keymap.set("n", "<leader>f;", vim.lsp.buf.format), -- default formatter for svelte files, issues with prettierd
 		})
 	end,
 }
