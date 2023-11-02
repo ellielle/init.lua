@@ -33,6 +33,17 @@ return {
 				async = false,
 				timeout_ms = 500,
 			},
+
+			vim.keymap.set({ "n", "v" }, "<leader>;", function()
+				conform.format({
+					lsp_fallback = true,
+					async = false,
+					timeout_ms = 500,
+				})
+			end, { desc = "Format file, or range in visual mode" }),
+
+			-- Formatting
+			-- vim.keymap.set("n", "<leader>;f", vim.lsp.buf.format) -- separate format key for svelte files, issues with formatter
 		})
 	end,
 }

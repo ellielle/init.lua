@@ -27,7 +27,7 @@ vim.opt.breakindent = true -- wrapped lines continue with the same indent
 -- vim.opt.completeopt = { "menuone" } -- use the same menu when one or more options available
 vim.opt.swapfile = false
 vim.opt.backup = false
--- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false -- turn off highlighting on search

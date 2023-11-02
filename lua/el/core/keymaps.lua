@@ -43,10 +43,6 @@ vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
--- Formatting
-vim.keymap.set("n", "<leader>;f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>;", "<cmd>lua require('conform').format()<CR>")
-
 -- Shortcut to substitute all instances of the text the cursor is over
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 

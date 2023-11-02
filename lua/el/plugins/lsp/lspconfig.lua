@@ -60,6 +60,7 @@ return {
 				vim.lsp.buf.signature_help()
 			end, opts)
 		end
+
 		-- enable keybinds only when lsp server is available
 		local on_attach = function(client, bufnr)
 			-- assign keymaps meant for lsp features
@@ -86,10 +87,10 @@ return {
 		})
 
 		-- Set up LSP servers with the same config
-		local servers = { "html", "bashls", "jsonls", "tailwindcss", "cssls", "svelte", "tailwindcss" }
+		local servers = { "html", "bashls", "jsonls", "tailwindcss", "cssls", "tailwindcss" }
 
 		for _, lsp in pairs(servers) do
-			require("lspconfig")[lsp].setup({
+			lspconfig[lsp].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 				flags = {
@@ -97,6 +98,23 @@ return {
 				},
 			})
 		end
+
+		-- configure svelte server
+		lspconfig["svelte"].setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+
+				vim.api.nvim_create_autocmd("BufWritePost", {
+					pattern = { "*.js", "*.ts" },
+					callback = function(ctx)
+						if client.name == "svelte" then
+							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+						end
+					end,
+				})
+			end,
+		})
 
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
