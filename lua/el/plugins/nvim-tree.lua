@@ -14,8 +14,6 @@ return {
 		nvimtree.setup({
 			sort = {
 				sorter = "name",
-				files_first = true,
-				folders_first = false,
 			},
 		})
 		vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- Toggle nvimtree
