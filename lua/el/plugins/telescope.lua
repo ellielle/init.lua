@@ -16,6 +16,12 @@ return {
 			return
 		end
 
+		local actions_status, actions = pcall(require, "telescope.actions")
+		if not actions_status then
+			print("telescope.actions failed to load")
+			return
+		end
+
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = { "node_modules" },
@@ -27,17 +33,24 @@ return {
 					filesize_limit = 0.1,
 					timeout = 250,
 				},
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
+						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+					},
+				},
 			},
 		})
 
-		-- set keymaps
+		-- set keymaps for finding files
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
 		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy find files in current git repo" })
 		-- find string in cwd
 		vim.keymap.set("n", "<leader>fs", function()
 			builtin.grep_string({ search = vim.fn.input("grep > ") })
 		end, { desc = "Find any string in cwd" })
-
+		-- fuzzy search help tags
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
 	end,
 }
