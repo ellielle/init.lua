@@ -27,24 +27,19 @@ return {
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({
-			completion = {
-				completeopt = "menu,menuone",
-			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-			-- auto-select completion entry
-			preselect = cmp.PreselectMode.Item,
 
 			mapping = cmp.mapping.preset.insert({
 				-- Enter to confirm completions
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 				-- move between completions
-				["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
 
 				-- ctrl+space to trigger completion menu
 				["<C-Space>"] = cmp.mapping.complete(),
