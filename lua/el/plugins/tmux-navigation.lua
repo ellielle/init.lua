@@ -3,7 +3,7 @@ return {
 	config = function()
 		local nvimtmux_status, nvim_tmux_nav = pcall(require, "nvim-tmux-navigation")
 		if not nvimtmux_status then
-			print("nvim-tmux-navigation failed to load")
+			vim.notify(nvim_tmux_nav, vim.log.levels.ERROR)
 			return
 		end
 

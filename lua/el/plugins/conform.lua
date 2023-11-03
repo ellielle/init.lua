@@ -6,7 +6,7 @@ return {
 		-- import conform formatter plugin safely
 		local status, conform = pcall(require, "conform")
 		if not status then
-			print("conform did not load")
+			vim.notify(conform, vim.log.levels.ERROR)
 			return
 		end
 

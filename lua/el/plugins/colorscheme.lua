@@ -6,7 +6,7 @@ return {
 		-- colorscheme setup
 		local setup, colorscheme = pcall(require, "rose-pine")
 		if not setup then
-			print("The colorscheme failed to load")
+			vim.notify(colorscheme, vim.log.levels.ERROR)
 			return
 		end
 

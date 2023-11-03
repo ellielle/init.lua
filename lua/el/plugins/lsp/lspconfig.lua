@@ -8,21 +8,21 @@ return {
 		-- import lspconfig safely
 		local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 		if not lspconfig_status then
-			print("lspconfig failed to load")
+			vim.notify(lspconfig, vim.log.levels.ERROR)
 			return
 		end
 
 		-- import cmp_nvim_lsp safely
 		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 		if not cmp_nvim_lsp_status then
-			print("cmp_nvim_lsp failed to load")
+			vim.notify(cmp_nvim_lsp, vim.log.levels.ERROR)
 			return
 		end
 
 		-- import typescript-tools safely
 		local typescript_tools_status, typescript_tools = pcall(require, "typescript-tools")
 		if not typescript_tools_status then
-			print("typescript-tools failed to load")
+			vim.notify(typescript_tools, vim.log.levels.ERROR)
 			return
 		end
 

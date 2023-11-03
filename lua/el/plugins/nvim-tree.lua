@@ -8,7 +8,7 @@ return {
 	config = function()
 		local nvimtree_status, nvimtree = pcall(require, "nvim-tree")
 		if not nvimtree_status then
-			print("nvim-tree failed to load")
+			vim.notify(nvimtree, vim.log.levels.ERROR)
 			return
 		end
 		nvimtree.setup({

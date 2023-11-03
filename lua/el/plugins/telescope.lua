@@ -6,19 +6,19 @@ return {
 		-- import telescope safely
 		local status, telescope = pcall(require, "telescope")
 		if not status then
-			print("telescope failed to load")
+			vim.notify(telescope, vim.log.levels.ERROR)
 			return
 		end
 
 		local builtin_status, builtin = pcall(require, "telescope.builtin")
 		if not builtin_status then
-			print("telescope.builtin failed to load")
+			vim.notify(builtin, vim.log.levels.ERROR)
 			return
 		end
 
 		local actions_status, actions = pcall(require, "telescope.actions")
 		if not actions_status then
-			print("telescope.actions failed to load")
+			vim.notify(actions, vim.log.levels.ERROR)
 			return
 		end
 

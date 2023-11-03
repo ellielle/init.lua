@@ -13,14 +13,14 @@ return {
 	config = function()
 		local cmp_status, cmp = pcall(require, "cmp")
 		if not cmp_status then
-			print("nvim-cmp failed to load")
+			vim.notify(cmp, vim.log.levels.ERROR)
 			return
 		end
 
 		-- import luasnip plugin safely
 		local luasnip_status, luasnip = pcall(require, "luasnip")
 		if not luasnip_status then
-			print("luasnip did not load")
+			vim.notify(luasnip, vim.log.levels.ERROR)
 			return
 		end
 

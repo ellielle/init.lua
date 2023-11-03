@@ -8,7 +8,7 @@ return {
 		-- import mason plugin safely
 		local mason_status, mason = pcall(require, "mason")
 		if not mason_status then
-			print("mason failed to load")
+			vim.notify(mason, vim.log.levels.ERROR)
 			return
 		end
 
@@ -18,7 +18,7 @@ return {
 		-- import mason-lspconfig plugin safely
 		local mason_lsp_config_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 		if not mason_lsp_config_status then
-			print("mason-lspconfig failed to load")
+			vim.notify(mason_lspconfig, vim.log.levels.ERROR)
 			return
 		end
 
@@ -42,7 +42,7 @@ return {
 		-- import mason-tool-installer plugin safely
 		local mason_tool_installer_status, mason_tool_installer = pcall(require, "mason-tool-installer")
 		if not mason_tool_installer_status then
-			print("mason-tool-installer failed to load")
+			vim.notify(mason_tool_installer, vim.log.levels.ERROR)
 			return
 		end
 

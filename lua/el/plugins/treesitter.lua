@@ -16,7 +16,7 @@ return {
 		-- import treesitter safely
 		local status, treesitter = pcall(require, "nvim-treesitter.configs")
 		if not status then
-			print("nvim-treesitter failed to load")
+			vim.notify(treesitter, vim.log.levels.ERROR)
 			return
 		end
 

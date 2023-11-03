@@ -5,7 +5,7 @@ return {
 		-- import lualine plugin safely
 		local status, lualine = pcall(require, "lualine")
 		if not status then
-			print("lualine failed to load")
+			vim.notify(lualine, vim.log.levels.ERROR)
 			return
 		end
 
