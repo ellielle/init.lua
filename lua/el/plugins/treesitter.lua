@@ -41,6 +41,7 @@ return {
 				"jsonc",
 				"lua",
 				"vim",
+				"vimdoc",
 				"markdown",
 				"query",
 				"bash",
