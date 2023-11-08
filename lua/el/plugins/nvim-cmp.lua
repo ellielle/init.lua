@@ -35,7 +35,7 @@ return {
 
 			mapping = cmp.mapping.preset.insert({
 				-- Enter to confirm completions
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
 				-- move between completions
 				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
