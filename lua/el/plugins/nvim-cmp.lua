@@ -1,14 +1,16 @@
 return {
+	-- completion framework
 	"hrsh7th/nvim-cmp",
 	dependencies = {
-		"L3MON4D3/LuaSnip",
-		-- autocompletion
-		"saadparwaiz1/cmp_luasnip",
+		-- LSP completion source
 		"hrsh7th/cmp-nvim-lsp",
-		-- source for file system paths
+
+		-- useful completion sources
 		"hrsh7th/cmp-path",
-		-- function parameter hints
+		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"hrsh7th/cmp-buffer",
+		"L3MON4D3/LuaSnip",
 	},
 	config = function()
 		local cmp_status, cmp = pcall(require, "cmp")
@@ -31,6 +33,7 @@ return {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
+
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -51,10 +54,27 @@ return {
 
 			-- autocompletion sources
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp_signature_help" }, -- function param help
-				{ name = "nvim_lsp", priority = 1000 }, -- lsp
-				{ name = "path", priority = 250 },
+				{ name = "path", priority = 250 }, -- file paths
+				{ name = "nvim_lsp_signature_help" }, -- function signatures
+				{ name = "nvim_lsp", priority = 1000, keyword_length = 3 }, -- lsp
+				{ name = "nvim_lua", priority = 250, keyword_length = 2 }, -- completion for neovim's Lua runtime API
+				{ name = "buffer", priority = 250, keyword_length = 2 }, -- source current buffer
+				{ name = "LuaSnip", priority = 250, keyword_length = 2 },
 			}),
+
+			formatting = {
+				fields = { "menu", "abbr", "kind" },
+				format = function(entry, item)
+					local menu_icon = {
+						nvim_lsp = "λ",
+						vsnip = "⋗",
+						buffer = "Ω",
+						path = "🖫",
+					}
+					item.menu = menu_icon[entry.source.name]
+					return item
+				end,
+			},
 		})
 	end,
 }
