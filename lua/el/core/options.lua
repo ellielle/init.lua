@@ -1,20 +1,17 @@
 -- disable netrw first thing for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_newtwPlugin = 1
-vim.opt.termguicolors = true
--- vim.opt.colorcolumn = "120" -- column for line length, kinda annoying af
 
 vim.opt.tabstop = 2 -- tabbed lines will appear indented by this many characters
--- vim.opt.softtabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2 -- number of spaces inserted for each tab/indent
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
--- vim.opt.wrap = false
-
 vim.opt.nu = true -- turn on line numbers
 vim.opt.relativenumber = true -- relative line numbers
 
+vim.opt.termguicolors = true
 vim.opt.splitbelow = true -- new windows are created above
 vim.opt.splitright = true -- new windows are created to the left
 
