@@ -1,6 +1,23 @@
 return {
 	"rest-nvim/rest.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	keys = {
+		{
+			"<leader>px",
+			"<cmd>lua require('rest-nvim').run()<CR>",
+			desc = "rest: Execute request",
+		},
+		{
+			"<leader>pp",
+			"<cmd>lua require('rest-nvim').run(true)<CR>",
+			desc = "rest: Preview request",
+		},
+		{
+			"<leader>pr",
+			"<cmd>lua require('rest-nvim').last()<CR>",
+			desc = "rest: Repeat previous request",
+		},
+	},
 	ft = "http",
 	event = { "BufReadPre *.http", "BufNewFile *.http" },
 	opts = {
@@ -47,14 +64,5 @@ return {
 			return
 		end
 		rest.setup(opts)
-
-		vim.keymap.set("n", "<leader>px", "<cmd>lua require('rest-nvim').run()<CR>", { desc = "Execute request" })
-		vim.keymap.set("n", "<leader>pp", "<cmd>lua require('rest-nvim').run(true)<CR>", { desc = "Preview request" })
-		vim.keymap.set(
-			"n",
-			"<leader>pr",
-			"<cmd>lua require('rest-nvim').last()<CR>",
-			{ desc = "Repeat previous request" }
-		)
 	end,
 }

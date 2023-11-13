@@ -5,6 +5,9 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
+	keys = {
+		{ "<C-e>", ":NvimTreeToggle<CR>", desc = "nvim-tree: Toggle" },
+	},
 	config = function()
 		local nvimtree_status, nvimtree = pcall(require, "nvim-tree")
 		if not nvimtree_status then
@@ -16,7 +19,5 @@ return {
 				sorter = "name",
 			},
 		})
-		vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- Toggle nvimtree
-		vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>") -- Toggle nvimtree
 	end,
 }
