@@ -67,6 +67,10 @@ return {
 			keymaps(bufnr)
 		end
 
+		local on_attach_ruff = function(client, bufnr)
+			client.server_capabilities.hoverProvider = false
+		end
+
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -87,7 +91,7 @@ return {
 		})
 
 		-- Set up LSP servers with the same config
-		local servers = { "html", "bashls", "jsonls", "tailwindcss", "cssls", "tailwindcss" }
+		local servers = { "html", "bashls", "jsonls", "tailwindcss", "cssls", "tailwindcss", "pyright" }
 
 		for _, lsp in pairs(servers) do
 			lspconfig[lsp].setup({
@@ -98,6 +102,12 @@ return {
 				},
 			})
 		end
+
+		-- python config with ruff_lsp
+		lspconfig["ruff_lsp"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach_ruff,
+		})
 
 		-- configure svelte server
 		lspconfig["svelte"].setup({

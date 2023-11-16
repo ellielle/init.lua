@@ -33,6 +33,7 @@ return {
 				"bashls",
 				"jsonls",
 				"tailwindcss",
+				"pyright",
 			},
 
 			-- auto-install configured servers (with lspconfig)
@@ -51,6 +52,7 @@ return {
 			ensure_installed = {
 				"prettierd",
 				"stylua",
+				"ruff",
 			},
 		})
 	end,

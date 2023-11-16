@@ -45,7 +45,7 @@ return {
 			end, { desc = "Format file, or range in visual mode" }),
 
 			-- Formatting
-			-- vim.keymap.set("n", "<leader>f;", vim.lsp.buf.format), -- default formatter for svelte files, issues with prettierd
+			vim.keymap.set("n", "<leader>f;", vim.lsp.buf.format), -- default formatter for files that don't like conform
 		})
 	end,
 }
