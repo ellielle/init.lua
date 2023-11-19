@@ -23,7 +23,7 @@ return {
 		-- configure treesitter
 		treesitter.setup({
 			-- enable context commentstring plugin
-			context_commentstring = {
+			ts_context_commentstring = {
 				enable = true,
 				enable_autocmd = false,
 			},
