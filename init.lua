@@ -3,7 +3,7 @@ require("el.core.options")
 require("el.core.keymaps")
 
 -- load lazy.nvim package manager
-require("el.lazy") 
+require("el.lazy")
 
 -- set nvim-notify as the default notififcation function
 vim.notify = require("notify")

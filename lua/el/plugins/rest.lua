@@ -1,23 +1,6 @@
 return {
 	"rest-nvim/rest.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	keys = {
-		{
-			"<leader>px",
-			"<cmd>lua require('rest-nvim').run()<CR>",
-			desc = "rest: Execute request",
-		},
-		{
-			"<leader>pp",
-			"<cmd>lua require('rest-nvim').run(true)<CR>",
-			desc = "rest: Preview request",
-		},
-		{
-			"<leader>pr",
-			"<cmd>lua require('rest-nvim').last()<CR>",
-			desc = "rest: Repeat previous request",
-		},
-	},
 	ft = "http",
 	event = { "BufReadPre *.http", "BufNewFile *.http" },
 	opts = {
@@ -63,6 +46,19 @@ return {
 			vim.notify("Rest is not installed", 3)
 			return
 		end
+
+		local ws_status, wk = pcall(require, "which-key")
+		if not ws_status then
+			vim.notify(wk, vim.log.levels.ERROR)
+			return
+		end
 		rest.setup(opts)
+		wk.register({
+			p = {
+				p = { "lua require('rest-nvim').run()", "rest: Execute request" },
+				r = { "lua require('rest-nvim').run(true)", "rest: Execute previous request" },
+				x = { "lua require('rest-nvim').last()", "rest: Repeat request" },
+			},
+		}, { prefix = "<leader>" })
 	end,
 }

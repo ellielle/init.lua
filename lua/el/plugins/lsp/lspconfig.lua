@@ -5,21 +5,24 @@ return {
 		"pmizio/typescript-tools.nvim",
 	},
 	config = function()
-		-- import lspconfig safely
 		local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 		if not lspconfig_status then
 			vim.notify(lspconfig, vim.log.levels.ERROR)
 			return
 		end
 
-		-- import cmp_nvim_lsp safely
+		local ws_status, wk = pcall(require, "which-key")
+		if not ws_status then
+			vim.notify(wk, vim.log.levels.ERROR)
+			return
+		end
+
 		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 		if not cmp_nvim_lsp_status then
 			vim.notify(cmp_nvim_lsp, vim.log.levels.ERROR)
 			return
 		end
 
-		-- import typescript-tools safely
 		local typescript_tools_status, typescript_tools = pcall(require, "typescript-tools")
 		if not typescript_tools_status then
 			vim.notify(typescript_tools, vim.log.levels.ERROR)
@@ -27,38 +30,54 @@ return {
 		end
 
 		local keymaps = function(bufnr)
-			local opts = { buffer = bufnr, remap = false }
+			wk.register({
+				v = {
+					c = {
+						a = { vim.lsp.buf.code_action, "LSP: Code Actions", buffer = bufnr },
+					},
+					d = { vim.diagnostic.open_float, "LSP: Open float diagnostic", buffer = bufnr },
+					r = {
+						n = { vim.lsp.buf.rename, "LSP: Rename under cursor", buffer = bufnr },
+						r = { vim.lsp.buf.references, "LSP: References", buffer = bufnr },
+					},
+					w = {
+						s = { vim.lsp.buf.workspace_symbol, "LSP: Workspace Symbol", buffer = bufnr },
+					},
+				},
+			}, { prefix = "<leader>" })
 
-			vim.keymap.set("n", "gd", function()
-				vim.lsp.buf.definition()
-			end, opts)
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover()
-			end, opts)
-			vim.keymap.set("n", "<leader>vws", function()
-				vim.lsp.buf.workspace_symbol()
-			end, opts)
-			vim.keymap.set("n", "<leader>vd", function()
-				vim.diagnostic.open_float()
-			end, opts)
-			vim.keymap.set("n", "[d", function()
-				vim.diagnostic.goto_next()
-			end, opts)
-			vim.keymap.set("n", "]d", function()
-				vim.diagnostic.goto_prev()
-			end, opts)
-			vim.keymap.set("n", "<leader>vca", function()
-				vim.lsp.buf.code_action()
-			end, opts)
-			vim.keymap.set("n", "<leader>vrr", function()
-				vim.lsp.buf.references()
-			end, opts)
-			vim.keymap.set("n", "<leader>vrn", function()
-				vim.lsp.buf.rename()
-			end, opts)
-			vim.keymap.set("n", "<C-i>", function()
-				vim.lsp.buf.signature_help()
-			end, opts)
+			wk.register({
+				["[d"] = {
+					function()
+						vim.diagnostic.goto_next()
+					end,
+					"LSP Diagnostic: Goto Next",
+					buffer = bufnr,
+				},
+				["]d"] = {
+					function()
+						vim.diagnostic.goto_prev()
+					end,
+					"LSP Diagnostic: Goto Prev",
+					buffer = bufnr,
+				},
+				g = {
+					d = { vim.lsp.buf.definition, "LSP: Goto definition", buffer = bufnr },
+				},
+				K = {
+					function()
+						vim.lsp.buf.hover()
+					end,
+					"LSP: Hover",
+					buffer = bufnr,
+				},
+				["<C-i>"] = {
+					function()
+						vim.lsp.buf.signature_help()
+					end,
+					"LSP: Show information",
+				},
+			})
 		end
 
 		-- enable keybinds only when lsp server is available

@@ -6,7 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = {
-		{ "<C-e>", ":NvimTreeToggle<CR>", desc = "nvim-tree: Toggle" },
+		{ "<leader>fe", ":NvimTreeToggle<CR>", desc = "nvim-tree: Toggle" },
 	},
 	config = function()
 		local nvimtree_status, nvimtree = pcall(require, "nvim-tree")

@@ -5,26 +5,30 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-	keys = {
-		{
-			"<leader>a",
-			"<cmd>lua require('harpoon.mark').add_file()<CR>",
-			desc = "harpon: Mark file",
-		},
-		{
-			"<leader>hn",
-			"<cmd>lua require('harpoon.ui').nav_next()<CR>",
-			desc = "harpoon: Go to next mark",
-		},
-		{
-			"<leader>hp",
-			"<cmd>lua require('harpoon.ui').nav_prev()<CR>",
-			desc = "harpoon: Go to previous mark",
-		},
-		{
-			"<leader>he",
-			"<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
-			desc = "harpoon: Show marks",
-		},
-	},
+	config = function()
+		local hm_status, harpoon_mark = pcall(require, "harpoon.mark")
+		local hui_status, harpoon_ui = pcall(require, "harpoon.ui")
+		local ws_status, wk = pcall(require, "which-key")
+		if not ws_status then
+			vim.notify(wk, vim.log.levels.ERROR)
+			return
+		end
+		if not hm_status then
+			vim.notify(harpoon_mark, vim.log.levels.ERROR)
+			return
+		end
+		if not hui_status then
+			vim.notify(harpoon_ui, vim.log.levels.ERROR)
+			return
+		end
+
+		wk.register({
+			a = { harpoon_mark.add_file, "harpoon: Mark file" },
+			h = {
+				n = { harpoon_ui.nav_next, "harpoon: Go to next mark" },
+				p = { harpoon_ui.nav_prev, "harpoon: Go to previous mark" },
+				f = { harpoon_ui.toggle_quick_menu, "harpoon: Show marks" },
+			},
+		}, { prefix = "<leader>" })
+	end,
 }

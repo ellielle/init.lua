@@ -5,10 +5,30 @@ return {
 	config = function()
 		-- import conform formatter plugin safely
 		local status, conform = pcall(require, "conform")
+		local ws_status, wk = pcall(require, "which-key")
 		if not status then
 			vim.notify(conform, vim.log.levels.ERROR)
 			return
 		end
+
+		if not ws_status then
+			vim.notify(wk, vim.log.levels.ERROR)
+			return
+		end
+
+		wk.register({
+			name = "conform",
+			[";"] = {
+				function()
+					conform.format({
+						lsp_fallback = true,
+						async = false,
+						timeout_ms = 500,
+					})
+				end,
+				"Format file, or range in visual mode",
+			},
+		}, { prefix = "<leader>" })
 
 		-- setup conform plugin
 		conform.setup({
@@ -35,17 +55,6 @@ return {
 				async = false,
 				timeout_ms = 500,
 			},
-
-			vim.keymap.set({ "n", "v" }, "<leader>;", function()
-				conform.format({
-					lsp_fallback = true,
-					async = false,
-					timeout_ms = 500,
-				})
-			end, { desc = "Format file, or range in visual mode" }),
-
-			-- Formatting
-			vim.keymap.set("n", "<leader>f;", vim.lsp.buf.format), -- default formatter for files that don't like conform
 		})
 	end,
 }

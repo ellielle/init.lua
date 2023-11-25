@@ -2,8 +2,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_newtwPlugin = 1
 
-vim.g.mapleader = " "
-
 vim.opt.tabstop = 2 -- tabbed lines will appear indented by this many characters
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2 -- number of spaces inserted for each tab/indent
