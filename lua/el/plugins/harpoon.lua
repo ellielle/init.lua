@@ -7,18 +7,18 @@ return {
 	},
 	config = function()
 		local hm_status, harpoon_mark = pcall(require, "harpoon.mark")
-		local hui_status, harpoon_ui = pcall(require, "harpoon.ui")
-		local wk_status, wk = pcall(require, "which-key")
-		if not wk_status then
-			vim.notify(wk, vim.log.levels.ERROR)
-			return
-		end
 		if not hm_status then
 			vim.notify(harpoon_mark, vim.log.levels.ERROR)
 			return
 		end
+		local hui_status, harpoon_ui = pcall(require, "harpoon.ui")
 		if not hui_status then
 			vim.notify(harpoon_ui, vim.log.levels.ERROR)
+			return
+		end
+		local wk_status, wk = pcall(require, "which-key")
+		if not wk_status then
+			vim.notify(wk, vim.log.levels.ERROR)
 			return
 		end
 

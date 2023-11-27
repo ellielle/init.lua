@@ -3,7 +3,6 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		-- colorscheme setup
 		local setup, colorscheme = pcall(require, "rose-pine")
 		if not setup then
 			vim.notify(colorscheme, vim.log.levels.ERROR)

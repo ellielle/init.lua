@@ -46,12 +46,12 @@ return {
 			vim.notify("Rest is not installed", 3)
 			return
 		end
-
 		local wk_status, wk = pcall(require, "which-key")
 		if not wk_status then
 			vim.notify(wk, vim.log.levels.ERROR)
 			return
 		end
+
 		rest.setup(opts)
 		wk.register({
 			p = {

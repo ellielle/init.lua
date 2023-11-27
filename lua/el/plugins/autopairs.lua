@@ -10,13 +10,11 @@ return {
 			vim.notify(autopairs, vim.log.levels.ERROR)
 			return
 		end
-
 		local cmpautopairs_status, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 		if not cmpautopairs_status then
 			vim.notify(cmp_autopairs, vim.log.levels.ERROR)
 			return
 		end
-
 		local cmp_status, cmp = pcall(require, "cmp")
 		if not cmp_status then
 			vim.notify(cmp, vim.log.levels.ERROR)

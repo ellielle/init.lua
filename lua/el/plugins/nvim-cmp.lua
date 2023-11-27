@@ -18,8 +18,6 @@ return {
 			vim.notify(cmp, vim.log.levels.ERROR)
 			return
 		end
-
-		-- import luasnip plugin safely
 		local luasnip_status, luasnip = pcall(require, "luasnip")
 		if not luasnip_status then
 			vim.notify(luasnip, vim.log.levels.ERROR)

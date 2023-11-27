@@ -9,13 +9,11 @@ return {
 			vim.notify(telescope, vim.log.levels.ERROR)
 			return
 		end
-
 		local builtin_status, builtin = pcall(require, "telescope.builtin")
 		if not builtin_status then
 			vim.notify(builtin, vim.log.levels.ERROR)
 			return
 		end
-
 		local actions_status, actions = pcall(require, "telescope.actions")
 		if not actions_status then
 			vim.notify(actions, vim.log.levels.ERROR)
