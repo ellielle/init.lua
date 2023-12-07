@@ -8,7 +8,6 @@ return {
 			vim.notify(conform, vim.log.levels.ERROR)
 			return
 		end
-
 		local wk_status, wk = pcall(require, "which-key")
 		if not wk_status then
 			vim.notify(wk, vim.log.levels.ERROR)

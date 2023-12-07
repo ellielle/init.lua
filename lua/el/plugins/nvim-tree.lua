@@ -5,9 +5,6 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	keys = {
-		{ "<leader>fe", ":NvimTreeToggle<CR>", desc = "nvim-tree: Toggle" },
-	},
 	config = function()
 		local nvimtree_status, nvimtree = pcall(require, "nvim-tree")
 		if not nvimtree_status then
@@ -19,6 +16,12 @@ return {
 			vim.notify(wk, vim.log.levels.ERROR)
 			return
 		end
+
+		wk.register({
+			f = {
+				e = { ":NvimTreeToggle<CR>", "nvim-tree: Toggle" },
+			},
+		}, { prefix = "<leader>" })
 
 		nvimtree.setup({
 			sort = {
