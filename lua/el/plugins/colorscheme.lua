@@ -1,20 +1,19 @@
 return {
-	"rose-pine/neovim",
+	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local setup, colorscheme = pcall(require, "rose-pine")
+		local setup, colorscheme = pcall(require, "tokyonight")
 		if not setup then
 			vim.notify(colorscheme, vim.log.levels.ERROR)
 			return
 		end
 
 		colorscheme.setup({
-			variant = "main",
-			dark_variant = "main",
+			style = "night",
 		})
 
-		vim.cmd.colorscheme("rose-pine")
+		vim.cmd.colorscheme("tokyonight")
 
 		-- set transparent background
 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
