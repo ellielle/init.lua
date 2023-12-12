@@ -9,6 +9,6 @@ return {
 
 		vim.keymap.set("n", "[c", function()
 			context.go_to_context()
-		end, { silent = true })
+		end, { silent = true, desc = "Go to context" })
 	end,
 }

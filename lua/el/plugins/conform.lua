@@ -42,8 +42,6 @@ return {
 				css = { "prettierd" },
 				json = { "prettierd" },
 				vue = { "prettierd" },
-				-- prettierd is having issues with svelte files, default to lsp_fallback
-				-- svelte = { "prettierd" },
 				-- everything else will use lsp format
 			},
 			-- enable format on save
