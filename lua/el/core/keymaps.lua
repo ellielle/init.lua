@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>td", ":tabc<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "Y", "yg$")
+-- vim.keymap.set("n", "Y", "yg$")
 
 -- Keep cursor in place when using 'J' to join lines
 vim.keymap.set("n", "J", "mzJ`z")
@@ -25,11 +25,11 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Pass highlighted word into _ register before pasting
-vim.keymap.set("x", "<leader>p", [[\"_dP]])
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- Yanks into the system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [[\"+y]])
-vim.keymap.set("n", "<leader>Y", [[\"+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
 -- Delete into _ register
 vim.keymap.set("n", "<leader>d", '"_d')
