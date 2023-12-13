@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
 
+-- Format buffer
+vim.keymap.set("n", "<leader>;", vim.lsp.buf.format, { desc = "Format" })
+
 -- Tab control
 vim.keymap.set("n", "<leader>tt", ":tabnew<CR>", { desc = "New Tab" })
 vim.keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Next Tab" })
@@ -16,7 +19,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Keep cursor in place when using 'J' to join lines
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Half screen scrolling that keeps the cursor toward the center
+-- Half screen scrolling that keeps the cursor t oward the center
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
@@ -32,8 +35,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank to system" })
 
 -- Delete into _ register
-vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete to black hole" })
-vim.keymap.set("v", "<leader>d", '"_d', { desc = "Delete to black hole" })
+vim.keymap.set("n", "<leader>dd", '"_d', { desc = "Delete to black hole" })
+vim.keymap.set("v", "<leader>dd", '"_d', { desc = "Delete to black hole" })
 
 -- A hack around the differences between C-c vs Esc with vertical edit mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
