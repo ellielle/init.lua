@@ -8,15 +8,31 @@ return {
     end
 
     wk.register({
-      p = {
-        b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
-        p = {
-          r = {
+      d = {
+        b = { ":DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
+        c = {
+          function()
+            require("dap").terminate()
+            require("dapui").close()
+          end,
+          "DAP: Close",
+        },
+        h = { ":DapStepOut<CR>", "DAP: Step Out" },
+        j = { ":DapStepOver<CR>", "DAP: Step Over" },
+        l = { ":DapStepInto<CR>", "DAP: Step Into" },
+        r = {
+          p = {
             function()
               require("dap-python").test_method()
             end,
             "Run Python Debugger",
           },
+        },
+        x = {
+          function()
+            require("dap").restart()
+          end,
+          "DAP: Restart",
         },
       },
     }, { prefix = "<leader>" })
