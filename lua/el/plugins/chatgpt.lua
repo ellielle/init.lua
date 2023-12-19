@@ -8,7 +8,7 @@ return {
 	},
 	config = function()
 		require("chatgpt").setup({
-			api_key_cmd = "pass show openai/gpt_api",
+			api_key_cmd = "OPENAI_",
 		})
 
 		local wk_status, wk = pcall(require, "which-key")
@@ -35,9 +35,8 @@ return {
 				l = {
 					"<cmd>ChatGPTRun code_readability_analysis<CR>",
 					"Code Readability Analysis",
-					{ prefix = "<leader>" },
 				},
 			},
-		})
+		}, { prefix = "<leader>" })
 	end,
 }
