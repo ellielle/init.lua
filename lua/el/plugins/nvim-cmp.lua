@@ -58,6 +58,7 @@ return {
 				{ name = "nvim_lua", priority = 250, keyword_length = 2 }, -- completion for neovim's Lua runtime API
 				{ name = "buffer", priority = 250, keyword_length = 2 }, -- source current buffer
 				{ name = "LuaSnip", priority = 250, keyword_length = 2 },
+				{ name = "neorg", priority = 250, keyword_length = 2 }, -- neorg plugin for notes/organization
 			}),
 
 			formatting = {
