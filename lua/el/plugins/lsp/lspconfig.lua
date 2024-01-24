@@ -106,6 +106,7 @@ return {
 			settings = {
 				-- spawn additional tsserver instance to calculate diagnostics on it
 				separate_diagnostic_server = false,
+				expose_as_code_action = "all",
 			},
 		})
 
