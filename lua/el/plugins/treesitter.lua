@@ -43,6 +43,7 @@ return {
 				"vim",
 				"vimdoc",
 				"markdown",
+				"markdown_inline",
 				"query",
 				"bash",
 				"dockerfile",

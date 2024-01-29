@@ -30,6 +30,8 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false -- highlight all matches on previous search pattern
 vim.opt.incsearch = true -- incremental search highlighting
 
+vim.opt.conceallevel = 2
+
 -- :help completeopt
 -- menuone: popup even when there's only one match
 -- noinsert: Do not insert text until a selection is made
