@@ -11,6 +11,12 @@ return {
 			return
 		end
 
+		local util_status, util = pcall(require, "lspconfig/util")
+		if not util_status then
+			vim.notify(util, vim.log.levels.ERROR)
+			return
+		end
+
 		local wk_status, wk = pcall(require, "which-key")
 		if not wk_status then
 			vim.notify(wk, vim.log.levels.ERROR)
@@ -127,6 +133,24 @@ return {
 		lspconfig["ruff_lsp"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach_ruff,
+		})
+
+		-- go config with gopls
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					usePlaceholders = true,
+					analyses = {
+						unusedparams = true,
+					},
+				},
+			},
 		})
 
 		-- configure svelte server
