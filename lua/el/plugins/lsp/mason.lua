@@ -32,7 +32,6 @@ return {
 				"svelte",
 				"bashls",
 				"jsonls",
-				"tailwindcss",
 				"pyright",
 				"gopls",
 			},

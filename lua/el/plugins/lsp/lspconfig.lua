@@ -117,7 +117,7 @@ return {
 		})
 
 		-- Set up LSP servers with the same config
-		local servers = { "html", "bashls", "jsonls", "tailwindcss", "cssls", "tailwindcss", "pyright" }
+		local servers = { "html", "bashls", "jsonls", "cssls", "pyright" }
 
 		for _, lsp in pairs(servers) do
 			lspconfig[lsp].setup({
