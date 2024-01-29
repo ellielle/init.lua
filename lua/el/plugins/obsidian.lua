@@ -9,7 +9,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	opts = {
-		dir = "~/vaults/notes",
+		dir = "~/vault/notes",
 		completion = {
 			nvim_cmp = true,
 			min_chars = 2,
