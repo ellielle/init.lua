@@ -16,7 +16,6 @@ return {
 		{
 			"<leader>td",
 			":lua require('trouble').toggle('document_diagnostics)<CR>",
-			desc = "trouble: Toggle document diagnostics",
 		},
 		{
 			"<leader>tq",
