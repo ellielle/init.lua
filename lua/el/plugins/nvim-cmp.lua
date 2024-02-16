@@ -59,6 +59,7 @@ return {
 				{ name = "buffer", priority = 250, keyword_length = 2 }, -- source current buffer
 				{ name = "LuaSnip", priority = 250, keyword_length = 2 },
 				{ name = "neorg", priority = 250, keyword_length = 2 }, -- neorg plugin for notes/organization
+				{ name = "codeium" },
 			}),
 
 			formatting = {

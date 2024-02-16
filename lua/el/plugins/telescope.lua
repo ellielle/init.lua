@@ -36,22 +36,17 @@ return {
 				},
 			},
 		})
-
-		-- register keys for telescope
-		wk.register({
-			f = {
-				f = { builtin.find_files, "Fuzzy find files in cwd" },
-				s = {
-					function()
-						builtin.grep_string({ search = vim.fn.input("grep > ") })
-					end,
-					"grep a string to find in cwd",
-				},
-				h = { builtin.help_tags, "Fuzzy find help tags" },
-			},
-			{ prefix = "<leader>" },
-		})
+		-- set keymaps for finding files
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
 		-- fuzzy find in git repo
 		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy find files in current git repo" })
+		-- find string in cwd
+		vim.keymap.set("n", "<leader>fs", function()
+			builtin.grep_string({ search = vim.fn.input("grep > ") })
+		end, { desc = "Find any string in cwd" })
+		-- fuzzy search help tags
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
+		-- open notifications in telescope
+		vim.keymap.set("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Open notifications in telescope" })
 	end,
 }
