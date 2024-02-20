@@ -10,11 +10,12 @@ return {
 	},
 	opts = {
 		dir = "~/vault/notes",
+		new_notes_location = "current_dir",
 		completion = {
 			nvim_cmp = true,
 			min_chars = 2,
-			new_notes_location = "current_dir",
-			prepend_note_id = true,
+			-- prepend_note_id = true,
+			-- deprecated
 		},
 		mappings = {
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -33,6 +34,17 @@ return {
 				opts = { buffer = true },
 			},
 		},
+
+		wiki_link_func = function(opts)
+			-- replaces opts.completion.prepend_note_id
+			if opts.id == nil then
+				return string.format("[[%s]]", opts.label)
+			elseif opts.label ~= opts.id then
+				return string.format("[[%s|%s]]", opts.id, opts.label)
+			else
+				return string.format("[[%S]]", opts.id)
+			end
+		end,
 
 		note_id_func = function(title)
 			-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
