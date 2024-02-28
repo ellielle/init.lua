@@ -1,5 +1,8 @@
 return {
 	"nvimtools/none-ls.nvim",
+	dependencies = {
+		"nvimtools/none-ls-extras.nvim",
+	},
 	config = function()
 		local none_status, nonels = pcall(require, "null-ls")
 		if not none_status then
@@ -17,7 +20,7 @@ return {
 				nonels.builtins.formatting.gofmt,
 				nonels.builtins.formatting.goimports_reviser,
 				nonels.builtins.diagnostics.mypy,
-				nonels.builtins.diagnostics.ruff,
+				require("none-ls.diagnostics.ruff"),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
