@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.opt.mouse = ""
 
 -- Format buffer
 vim.keymap.set("n", "<leader>;", vim.lsp.buf.format, { desc = "Format" })

@@ -10,12 +10,12 @@ return {
 		},
 		{
 			"<leader>tw",
-			":lua require('trouble').toggle('workspace_diagnostics)<CR>",
+			":lua require('trouble').toggle('workspace_diagnostics')<CR>",
 			desc = "trouble: Toggle workspace diagnostics",
 		},
 		{
 			"<leader>td",
-			":lua require('trouble').toggle('document_diagnostics)<CR>",
+			":lua require('trouble').toggle('document_diagnostics')<CR>",
 		},
 		{
 			"<leader>tq",
