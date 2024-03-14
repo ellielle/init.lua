@@ -1,9 +1,8 @@
 return {
-	"tiagovla/tokyodark.nvim",
+	"Shatur/neovim-ayu",
 	lazy = false,
-	opts = {},
-	config = function(_, opts)
-		local setup, colorscheme = pcall(require, "tokyodark")
+	config = function()
+		local setup, colorscheme = pcall(require, "ayu")
 		if not setup then
 			vim.notify(colorscheme, vim.log.levels.ERROR)
 			return
@@ -11,6 +10,6 @@ return {
 
 		colorscheme.setup({})
 
-		vim.cmd.colorscheme("tokyodark")
+		vim.cmd.colorscheme("ayu")
 	end,
 }
