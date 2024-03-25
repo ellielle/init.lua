@@ -5,10 +5,10 @@ vim.opt.mouse = ""
 vim.keymap.set("n", "<leader>;", vim.lsp.buf.format, { desc = "Format" })
 
 -- Tab control
-vim.keymap.set("n", "<leader>tt", ":tabnew<CR>", { desc = "New Tab" })
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Next Tab" })
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Previous Tab" })
-vim.keymap.set("n", "<leader>td", ":tabc<CR>", { desc = "Close Tab" })
+vim.keymap.set("n", "<leader>wt", ":tabnew<CR>", { desc = "New Tab" })
+vim.keymap.set("n", "<leader>wn", ":tabn<CR>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader>wp", ":tabp<CR>", { desc = "Previous Tab" })
+vim.keymap.set("n", "<leader>wd", ":tabc<CR>", { desc = "Close Tab" })
 
 -- Allows shifting highlighted text up and down in visual mode
 -- fails when trying to move beyond first or last line in buffer
