@@ -15,8 +15,6 @@ vim.keymap.set("n", "<leader>wd", ":tabc<CR>", { desc = "Close Tab" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- vim.keymap.set("n", "Y", "yg$")
-
 -- Keep cursor in place when using 'J' to join lines
 vim.keymap.set("n", "J", "mzJ`z")
 
