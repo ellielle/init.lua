@@ -1,38 +1,67 @@
-vim.opt.tabstop = 2 -- tabbed lines will appear indented by this many characters
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2 -- number of spaces inserted for each tab/indent
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+-- [[ Setting options ]]
+-- See `:help vim.opt`
+--  For more options, you can see `:help option-list`
 
-vim.opt.nu = true -- turn on line numbers
-vim.opt.relativenumber = true -- relative line numbers
+-- Make line numbers default
+vim.opt.number = true
+-- Relative-to-cursor line numbers
+vim.opt.relativenumber = true
 
-vim.opt.termguicolors = true
-vim.opt.splitbelow = true -- new windows are created above
-vim.opt.splitright = true -- new windows are created to the left
+-- Enable mouse mode
+vim.opt.mouse = "a"
 
-vim.opt.scrolloff = 8 -- minimum visible lines above/below
-vim.opt.signcolumn = "yes"
--- vim.opt.isfname:append("@_@")
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true -- ignore case if only lower case is used (only used when ignorecase is on)
-vim.opt.breakindent = true -- wrapped lines continue with the same indent
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+-- vim.opt.clipboard = ""
+
+-- TODO: temporary change to see if I like how it feels/looks
+vim.opt.cmdheight = 0
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- Save undo history
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false -- highlight all matches on previous search pattern
-vim.opt.incsearch = true -- incremental search highlighting
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.opt.conceallevel = 2
+-- Keep signcolumn on by default
+vim.opt.signcolumn = "yes"
 
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force to select one from the menu
--- shortness: avoid showing extra messages when using completion
--- updatetime: set updatetime for CursorHoldk
-vim.opt.completeopt = { "menuone", "noselect", "noinsert" } -- use the same menu when one or more options available
+-- Decrease update time
 vim.opt.updatetime = 50
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
+
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
+
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true

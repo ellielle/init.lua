@@ -1,58 +1,30 @@
-vim.g.mapleader = " "
-vim.opt.mouse = ""
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Format buffer
-vim.keymap.set("n", "<leader>;", vim.lsp.buf.format, { desc = "Format" })
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- Tab control
-vim.keymap.set("n", "<leader>wt", ":tabnew<CR>", { desc = "New Tab" })
-vim.keymap.set("n", "<leader>wn", ":tabn<CR>", { desc = "Next Tab" })
-vim.keymap.set("n", "<leader>wp", ":tabp<CR>", { desc = "Previous Tab" })
-vim.keymap.set("n", "<leader>wd", ":tabc<CR>", { desc = "Close Tab" })
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Allows shifting highlighted text up and down in visual mode
--- fails when trying to move beyond first or last line in buffer
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- TIP: Disable arrow keys in normal mode
+-- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+-- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+-- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+-- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Keep cursor in place when using 'J' to join lines
-vim.keymap.set("n", "J", "mzJ`z")
-
--- Half screen scrolling that keeps the cursor t oward the center
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- Keep search terms in the middle when jumping between them
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- Pass highlighted word into _ register before pasting
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Delete to black hole before paste" })
-
--- Yanks into the system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system" })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank to system" })
-
--- Delete into _ register
-vim.keymap.set("n", "<leader>dd", '"_d', { desc = "Delete to black hole" })
-vim.keymap.set("v", "<leader>dd", '"_d', { desc = "Delete to black hole" })
-
--- A hack around the differences between C-c vs Esc with vertical edit mode
-vim.keymap.set("i", "<C-c>", "<Esc>")
-
--- pls go away Q
-vim.keymap.set("n", "Q", "<nop>")
-
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
--- Shortcut to substitute all instances of the text the cursor is over
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Shortcut to make file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- quickfix navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+--
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
