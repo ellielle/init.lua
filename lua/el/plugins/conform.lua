@@ -25,13 +25,11 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { "stylua" },
-      go = { "gofmt" },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
+      go = { "gofmt", "goimports-reviser" },
+      python = { "isort", "black" },
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      -- javascript = { { "prettierd", "prettier" } },
+      javascript = { { "prettierd", "prettier" } },
     },
   },
 }

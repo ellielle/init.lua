@@ -29,7 +29,7 @@ end
 
 return {
   check = function()
-    vim.health.start "Planting flowers..."
+    vim.health.start "Dependency Check..."
 
     local uv = vim.uv or vim.loop
     vim.health.info("System Information: " .. vim.inspect(uv.os_uname()))
