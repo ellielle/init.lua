@@ -18,9 +18,6 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 -- vim.opt.clipboard = ""
 
--- TODO: temporary change to see if I like how it feels/looks
-vim.opt.cmdheight = 0
-
 -- Enable break indent
 vim.opt.breakindent = true
 

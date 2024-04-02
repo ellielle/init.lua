@@ -34,6 +34,7 @@ vim.opt.rtp:prepend(lazypath)
 --    require('Comment').setup({})
 require("lazy").setup({
   { import = "el.plugins" },
+  { import = "el.plugins.lsp" },
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
 

@@ -135,8 +135,11 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      gopls = {},
-      -- pyright = {},
+      -- gopls = {},
+      pyright = {},
+      cssls = {},
+      bashls = {},
+      html = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
@@ -144,9 +147,7 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- tsserver = {},
-      --
-
+      tsserver = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -192,4 +193,4 @@ return { -- LSP Configuration & Plugins
       },
     }
   end,
-} 
+}
