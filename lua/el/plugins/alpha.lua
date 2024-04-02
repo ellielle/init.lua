@@ -8,10 +8,9 @@ return {
     -- TODO: lazy.stats.startuptime doesn't seem to be working, maybe it's called too early?
     local function footer()
       local stats = require("lazy").stats()
-      local datetime = os.date " %d-%m-%Y   %H:%M:%S"
       local loadtime_ms = math.floor(stats.startuptime * 100 + 0.5) / 100
 
-      return datetime .. "   " .. stats.count .. " plugins in " .. loadtime_ms .. "ms"
+      return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. loadtime_ms .. "ms" }
     end
 
     dashboard.section.buttons.val = {
@@ -104,7 +103,7 @@ return {
     }
 
     -- TODO: figure out why it stopped being random after copying it to new config
-    local idx = math.random(1, #header_art)
+    local idx = math.random(#header_art)
     dashboard.section.header.val = header_art[idx]
     dashboard.section.footer.val = footer()
 
