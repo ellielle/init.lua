@@ -14,12 +14,6 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -28,3 +22,45 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- Allows shifting highlighted text up and down in visual mode
+-- fails when trying to move beyond first or last line in buffer
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Keep cursor in place when using 'J' to join lines
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Half screen scrolling that keeps the cursor t oward the center
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Keep search terms in the middle when jumping between them
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Pass highlighted word into _ register before
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[_]register [d]elete before [P]utting" })
+
+-- Yanks into the system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "[+][Y]ank to system" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[+][Y]ank to system" })
+
+-- Delete into _ register
+vim.keymap.set("n", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
+vim.keymap.set("v", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
+
+-- A hack around the differences between C-c vs Esc with vertical edit mode
+-- vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- pls go away Q, I don't use U
+vim.keymap.set("n", "Q", "<nop>")
+
+-- TODO: uncomment after rewrite
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Shortcut to substitute all instances of the text the cursor is over
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Shortcut to make file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
