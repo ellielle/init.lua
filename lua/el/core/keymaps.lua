@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[+][Y]ank to system" })
 vim.keymap.set("n", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
 vim.keymap.set("v", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
 
--- A hack around the differences between C-c vs Esc with vertical edit mode
+-- A hack around the differences between C-c vs Esc with LSP completion
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- pls go away Q, I don't use U

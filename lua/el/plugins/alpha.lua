@@ -5,6 +5,7 @@ return {
     local alpha = require "alpha"
     local dashboard = require "alpha.themes.dashboard"
 
+    -- TODO: lazy.stats.startuptime doesn't seem to be working, maybe it's called too early?
     local function footer()
       local stats = require("lazy").stats()
       local datetime = os.date " %d-%m-%Y   %H:%M:%S"
@@ -102,6 +103,7 @@ return {
       },
     }
 
+    -- TODO: figure out why it stopped being random after copying it to new config
     local idx = math.random(1, #header_art)
     dashboard.section.header.val = header_art[idx]
     dashboard.section.footer.val = footer()
