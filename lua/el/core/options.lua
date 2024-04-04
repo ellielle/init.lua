@@ -6,6 +6,7 @@
 vim.opt.number = true
 -- Relative-to-cursor line numbers
 vim.opt.relativenumber = true
+vim.opt.tabstop = 2
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
