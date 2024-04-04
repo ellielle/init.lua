@@ -105,7 +105,6 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
-      -- ["golangci-lint"] = {},
       -- pyright = {},
       cssls = {},
       bashls = {},
