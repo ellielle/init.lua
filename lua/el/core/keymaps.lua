@@ -51,7 +51,8 @@ vim.keymap.set("n", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
 vim.keymap.set("v", "<leader>dd", '"_d', { desc = "[D]elete to black hole" })
 
 -- A hack around the differences between C-c vs Esc with LSP completion
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- TODO: remove when I get out of the bad habit of hitting this
+vim.keymap.set("i", "<C-c>", "<cmd>echo 'USE CTRL+['<CR>")
 
 -- pls go away Q, I don't use U
 vim.keymap.set("n", "Q", "<nop>")
