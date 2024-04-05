@@ -1,18 +1,8 @@
 return {
   "goolord/alpha-nvim",
   requires = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    local alpha = require "alpha"
+  opts = function()
     local dashboard = require "alpha.themes.dashboard"
-
-    -- TODO: lazy.stats.startuptime doesn't seem to be working, maybe it's called too early?
-    local function footer()
-      local stats = require("lazy").stats()
-      local loadtime_ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-
-      return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. loadtime_ms .. "ms" }
-    end
-
     dashboard.section.buttons.val = {
       dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -102,10 +92,9 @@ return {
       },
     }
 
-    -- TODO: figure out why it stopped being random after copying it to new config
+    math.randomseed(os.time())
     local idx = math.random(#header_art)
     dashboard.section.header.val = header_art[idx]
-    dashboard.section.footer.val = footer()
 
     local layouts = {
       -- Samurai layout
@@ -143,7 +132,39 @@ return {
 
     -- Layout for the dashboard, top to bottom order
     dashboard.opts.layout = layouts[idx]
+    return dashboard
+  end,
+  config = function(_, dashboard)
+    if vim.o.filetype == "lazy" then
+      vim.cmd.close()
+      vim.api.nvim_create_autocmd("User", {
+        once = true,
+        pattern = "AlphaReady",
+        callback = function()
+          require("lazy").show()
+        end,
+      })
+    end
 
-    alpha.setup(dashboard.config)
+    -- set up alpha with above options
+    require("alpha").setup(dashboard.opts)
+
+    vim.api.nvim_create_autocmd("User", {
+      once = true,
+      pattern = "LazyVimStarted",
+      callback = function()
+        local stats = require("lazy").stats()
+        local loadtime_ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+
+        dashboard.section.footer.val = "⚡ Neovim loaded "
+          .. stats.loaded
+          .. "/"
+          .. stats.count
+          .. " plugins in "
+          .. loadtime_ms
+          .. "ms"
+        pcall(vim.cmd.AlphaRedraw)
+      end,
+    })
   end,
 }
