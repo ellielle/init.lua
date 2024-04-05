@@ -1,36 +1,41 @@
 return {
   "folke/trouble.nvim",
-  branch = "dev", -- IMPORTANT! TODO: change branch when v3 goes live
+  -- branch = "dev",
   keys = {
     {
-      "<leader>tx",
-      "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "Diagnostics (Trouble)",
+      "<leader>xx",
+      function()
+        require("trouble").toggle()
+      end,
+      desc = "Toggle (Trouble)",
     },
     {
-      "<leader>tX",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      "<leader>xw",
+      function()
+        require("trouble").toggle "workspace_diagnostics"
+      end,
+      desc = "[W]orkspace Diagnostics (Trouble)",
+    },
+    {
+      "<leader>xd",
+      function()
+        require("trouble").toggle "workspace_diagnostics"
+      end,
       desc = "Buffer Diagnostics (Trouble)",
     },
     {
-      "<leader>ts",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
-      desc = "Symbols (Trouble)",
+      "<leader>xq",
+      function()
+        require("trouble").toggle "quickfix"
+      end,
+      desc = "[Q]uickfix (Trouble)",
     },
     {
-      "<leader>tl",
-      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
-    },
-    {
-      "<leader>tL",
-      "<cmd>Trouble loclist toggle<cr>",
-      desc = "Location List (Trouble)",
-    },
-    {
-      "<leader>tQ",
-      "<cmd>Trouble qflist toggle<cr>",
-      desc = "Quickfix List (Trouble)",
+      "<leader>xl",
+      function()
+        require("trouble").toggle "loclist"
+      end,
+      desc = "[L]oclist (Trouble)",
     },
   },
   opts = {}, -- for default options, refer to the configuration section for custom setup.
