@@ -65,3 +65,13 @@ vim.keymap.set("n", "<leader>g", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Shortcut to make file executable
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Runs a shell command and pipes the output through jq to a new vertical buffer
+-- Used for running curl commands from file to get API output in neovim
+-- TODO: expand on this, create a temporary readonly buffer
+vim.keymap.set(
+  "n",
+  "<leader>cs",
+  ":vnew ++ff=unix | set filetype=sh | read !sh # | jq<cr>",
+  { desc = "[C]url [S]hell file" }
+)
