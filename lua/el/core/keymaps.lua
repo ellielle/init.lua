@@ -68,7 +68,8 @@ vim.keymap.set("n", "<leader>g", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Runs a shell command and pipes the output through jq to a new vertical buffer
 -- Used for running curl commands from file to get API output in neovim
--- TODO: expand on this, create a temporary readonly buffer
+-- TODO: expand on this, create a temporary .sh filetype buffer
+-- to write curl queries in, then this command below (but altered to open a vert split down) to open in a split beneath
 vim.keymap.set(
   "n",
   "<leader>cs",
