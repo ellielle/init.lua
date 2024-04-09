@@ -3,7 +3,7 @@ return {
   config = function()
     require("colorizer").setup {
       filetypes = {
-        "css",
+        css = { rgb_fn = true },
         "javascript",
         "typescript",
         html = { mode = "foreground" },
