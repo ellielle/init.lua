@@ -1,4 +1,13 @@
 return {
   "NvChad/nvim-colorizer.lua",
-  opts = {},
+  config = function()
+    require("colorizer").setup {
+      filetypes = {
+        "css",
+        "javascript",
+        "typescript",
+        html = { mode = "foreground" },
+      },
+    }
+  end,
 }
