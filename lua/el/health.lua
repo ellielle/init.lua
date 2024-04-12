@@ -15,7 +15,7 @@ end
 local check_external_reqs = function()
   -- Utils needed for plugins I use
   -- TODO: health check
-  for _, exe in ipairs { "git", "make", "unzip", "rg", "fd", "jq" } do
+  for _, exe in ipairs { "git", "make", "unzip", "rg", "fd", "jq", "fswatch" } do
     local is_executable = vim.fn.executable(exe) == 1
     if is_executable then
       vim.health.ok(string.format("Found executable: '%s'", exe))

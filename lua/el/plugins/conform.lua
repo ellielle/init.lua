@@ -31,6 +31,7 @@ return { -- Autoformat
       -- is found.
       javascript = { { "prettierd", "prettier" } },
       yaml = { { "prettierd", "prettier" } },
+      markdown = { { "prettierd", "prettier" } },
     },
   },
 }
