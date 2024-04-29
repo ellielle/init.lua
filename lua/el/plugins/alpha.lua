@@ -1,6 +1,6 @@
 return {
   "goolord/alpha-nvim",
-  requires = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = function()
     local dashboard = require "alpha.themes.dashboard"
     dashboard.section.buttons.val = {

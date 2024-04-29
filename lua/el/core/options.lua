@@ -6,7 +6,10 @@
 vim.opt.number = true
 -- Relative-to-cursor line numbers
 vim.opt.relativenumber = true
+-- set the number of spaces that a <Tab> in teh file counts for.
 vim.opt.tabstop = 2
+-- set the number of spaces to use for each step of (auto)indent.
+vim.opt.shiftwidth = 2
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
