@@ -80,6 +80,14 @@ return { -- LSP Configuration & Plugins
             callback = vim.lsp.buf.clear_references,
           })
         end
+        local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+          buffer = event.buf,
+          group = lint_augroup,
+          callback = function()
+            require("lint").try_lint()
+          end,
+        })
       end,
     })
 
@@ -112,6 +120,7 @@ return { -- LSP Configuration & Plugins
       html = {},
       svelte = {},
       templ = {},
+      pylsp = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
@@ -146,6 +155,9 @@ return { -- LSP Configuration & Plugins
       },
     }
 
+    -- IMPORTANT: needs to be set up before LSP
+    require("neodev").setup {}
+
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
     --  other tools, you can run
@@ -162,9 +174,9 @@ return { -- LSP Configuration & Plugins
       "prettierd", -- Used to format JS/TS
       "isort", -- Sort Python imports
       "mypy", -- type checking for python
-      "ruff", -- python linting / formatting
       "debugpy", -- needed for python dap
       "delve", -- go debug
+      "ruff-lsp", -- lsp for python to work with pylsp
     })
     require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
