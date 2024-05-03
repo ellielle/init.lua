@@ -6,10 +6,13 @@
 vim.opt.number = true
 -- Relative-to-cursor line numbers
 vim.opt.relativenumber = true
+
+-- Tabs
+vim.opt.autoindent = true
 -- set the number of spaces that a <Tab> in teh file counts for.
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
 -- set the number of spaces to use for each step of (auto)indent.
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
@@ -49,8 +52,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
--- vim.opt.list = true
--- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "⏎" }
+vim.opt.list = true
+vim.opt.listchars = { tab = "» " }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
