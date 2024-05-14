@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- Run Go test ./... and display test errors
+-- and successes inline using
+--
+-- TODO:  vim.fn.jobstart(command, opts)
+--
+-- vim.api.nvim_create_autocmd("GoTestsOnSave", function() end, {})

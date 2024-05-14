@@ -7,6 +7,8 @@ return {
         "javascript",
         "typescript",
         html = { mode = "foreground" },
+        "go",
+        "python",
       },
     }
   end,

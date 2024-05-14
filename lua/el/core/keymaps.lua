@@ -30,6 +30,11 @@ vim.keymap.set("n", "<M-l>", "<C-w>5<", { desc = "Move focus to the left window"
 vim.keymap.set("n", "<M-k>", "<C-w>+", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<M-j>", "<C-w>-", { desc = "Move focus to the left window" })
 
+-- TODO: bind keys when needed
+-- Helper functions to test lua and reload pugins for dev
+vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
+
 -- Allows shifting highlighted text up and down in visual mode
 -- fails when trying to move beyond first or last line in buffer
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
