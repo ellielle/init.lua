@@ -1,14 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
   config = function()
-    local context_status, context = pcall(require, "treesitter-context")
-    if not context_status then
-      vim.notify(context, vim.log.levels.ERROR)
-      return
-    end
-
     vim.keymap.set("n", "[c", function()
-      context.go_to_context()
+      require("treesitter-context").go_to_context(vim.v.count1)
     end, { silent = true, desc = "Go to context" })
   end,
 }
