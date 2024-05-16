@@ -1,12 +1,6 @@
 return {
   "tpope/vim-fugitive",
   config = function()
-    wk = require "which-key"
-
-    wk.register({
-      g = {
-        s = { vim.cmd.Git, "Toggle git fugitive" },
-      },
-    }, { prefix = "<leader>" })
+    vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Toggle [g]it fugitive" })
   end,
 }

@@ -3,7 +3,6 @@ return {
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
-    local wk = require "which-key"
     local harpoon = require "harpoon"
 
     harpoon:setup()
@@ -27,19 +26,11 @@ return {
         :find()
     end
 
-    wk.register {
-      a = {
-        function()
-          harpoon:list():add()
-        end,
-        "Harpoon: [A]dd",
-      },
-      ["<C-e>"] = {
-        function()
-          toggle_telescope(harpoon:list())
-        end,
-        "Harpoon: Open Window",
-      },
-    }
+    vim.keymap.set("n", "<leader>a", function()
+      harpoon:list():add()
+    end, { desc = "Harpoon [A]dd" })
+    vim.keymap.set("n", "<C-e>", function()
+      toggle_telescope(harpoon:list())
+    end, { desc = "Harpoon: Open in Telescope" })
   end,
 }
