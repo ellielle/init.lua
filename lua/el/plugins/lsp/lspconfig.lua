@@ -118,6 +118,7 @@ return { -- LSP Configuration & Plugins
       bashls = {},
       jsonls = {},
       html = {},
+      -- tsserver = {},
       svelte = {},
       templ = {},
       pylsp = {
