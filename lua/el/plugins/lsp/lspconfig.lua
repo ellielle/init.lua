@@ -102,16 +102,41 @@ return { -- LSP Configuration & Plugins
             analyses = {
               unusedParams = true,
             },
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVaraibleTypes = true,
           },
         },
       },
       -- pyright = {},
       cssls = {},
       bashls = {},
-      jsonls = {},
+      jsonls = {
+        settings = {
+          json = {
+            validate = { enable = true },
+          },
+        },
+      },
       html = {},
-      -- tsserver = {},
-      svelte = {},
+      --       tsserver = {
+      --         server_capabilities = {
+      --           documentFormattingProvider = false,
+      --         },
+      --       },
+      svelte = {
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+        },
+      },
       templ = {},
       pylsp = {
         settings = {
