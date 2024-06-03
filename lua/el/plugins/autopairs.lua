@@ -4,7 +4,7 @@ return {
   dependencies = {
     "hrsh7th/nvim-cmp",
   },
-  config = {
+  opts = {
     check_ts = true,
   },
 }
