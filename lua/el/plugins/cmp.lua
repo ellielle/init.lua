@@ -34,11 +34,13 @@ return { -- Autocompletion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/cmp-path",
+    "onsails/lspkind.nvim",
   },
   config = function()
     -- See `:help cmp`
     local cmp = require "cmp"
     local luasnip = require "luasnip"
+    local lspkind = require "lspkind"
     luasnip.config.setup {}
 
     cmp.setup {
@@ -50,6 +52,18 @@ return { -- Autocompletion
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
+      },
+      -- set up lspkind to display glyphs in completions
+      formatting = {
+        format = lspkind.cmp_format {
+          mode = "symbol", -- show only symbol annotations
+          maxwidth = 50,
+          ellipsis_char = "...",
+          show_labelDetails = true,
+          before = function(entry, vim_item)
+            return vim_item
+          end,
+        },
       },
       completion = { completeopt = "menu,menuone,noinsert" },
 
