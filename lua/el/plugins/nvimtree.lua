@@ -8,8 +8,10 @@ return {
   config = function()
     local wk = require "which-key"
     local nvimtree = require "nvim-tree"
-    wk.register {
-      ["<C-n>"] = { ":NvimTreeToggle<CR>", "nvim-tree: Toggle" },
+    wk.add {
+      {
+        { "<C-n>", ":NvimTreeToggle<CR>", desc = "nvim-tree: Toggle" },
+      },
     }
 
     nvimtree.setup {
