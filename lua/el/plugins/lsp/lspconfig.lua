@@ -125,11 +125,11 @@ return { -- LSP Configuration & Plugins
         },
       },
       html = {},
-      --       tsserver = {
-      --         server_capabilities = {
-      --           documentFormattingProvider = false,
-      --         },
-      --       },
+      tsserver = {
+        server_capabilities = {
+          documentFormattingProvider = false,
+        },
+      },
       svelte = {
         capabilities = {
           workspace = {

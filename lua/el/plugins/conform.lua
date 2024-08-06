@@ -27,14 +27,14 @@ return { -- Autoformat
       lua = { "stylua" },
       go = { "gofmt", "goimports-reviser" },
       python = { "isort", "black" },
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      javascript = { { "prettierd", "prettier" } },
-      typescript = { { "prettierd", "prettier" } },
-      javascriptreact = { { "prettierd", "prettier" } },
-      typescriptreact = { { "pretierd", "prettier" } },
       yaml = { "yamlfmt" },
-      markdown = { { "prettierd", "prettier" } },
+      -- use stop_after_first to only run the first in the series
+      -- if you provide a formatter fallback
+      javascript = { "prettierd", "prettier", stop_after_first = true },
+      typescript = { "prettierd", "prettier", stop_after_first = true },
+      javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+      typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+      markdown = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }
