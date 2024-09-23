@@ -7,12 +7,15 @@ vim.opt.number = true
 -- Relative-to-cursor line numbers
 vim.opt.relativenumber = true
 
--- Tabs
+-- Spacing and tabs
 vim.opt.autoindent = true
 -- set the number of spaces that a <Tab> in teh file counts for.
 vim.opt.tabstop = 4
 -- set the number of spaces to use for each step of (auto)indent.
 vim.opt.shiftwidth = 4
+
+-- disable line wrapping
+vim.opt.wrap = false
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
@@ -23,7 +26,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
--- vim.opt.clipboard = ""
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -62,10 +65,10 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 999
 
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
+-- Allow cursor to move into blank blocks
+vim.opt.virtualedit = "block"
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
