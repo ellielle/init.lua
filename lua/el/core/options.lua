@@ -72,3 +72,6 @@ vim.opt.virtualedit = "block"
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
+
+-- enables better coloring and highlighting for non basic terminals
+vim.opt.termguicolors = true
